@@ -1,0 +1,146 @@
+*{
+    font-family: "Poppins", sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: rgb(52, 92, 254);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+
+/*BARRA DE PESQUISA*/
+#container{
+    padding: 20px;
+    background-color: white;
+    border: 3px solid white;
+    border-radius: 15px;
+}
+
+
+#search{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    padding: 4px 12px;
+}
+
+#search input{
+    border-style: none;
+    background-color: transparent;
+    font-size: 16px;
+    width: 100%;
+
+}
+
+#search input:focus-visible{
+    outline: none;
+}
+
+
+#search button{
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+/*CIDADE TEMPO*/
+
+#city{
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+#temp{
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+    background: linear-gradient(90deg, #5a7cdc, #606dde);
+    color: #fff;
+    border-radius: 10px;
+}
+
+#temp img{
+    display: flex;
+    height: 60px;
+    width: 60px;  
+}
+
+#temp-value{
+    font-weight: bold;
+    font-size: 50px;
+    line-height: 50px;
+}
+
+#temp-description{
+    font-weight: 500;
+}
+
+#others{
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.info{
+    display: flex;
+    align-items: center;
+    border: 1px solid grey;
+
+    border-radius: 10px;
+    background-color: #fff;
+    gap: 10px;
+    padding: 3px 10px;
+}
+
+.info h2{
+   font-size: 15px; 
+   font-weight: 600;
+}
+
+.info p{
+    font-weight: 500;
+}
+
+.info i{
+    font-size: 20px;
+    width: 15%;
+    text-align: center;
+}
+
+#temp-max-icon{
+    color: rgb(229, 145, 27);
+}
+
+#temp-min-icon{
+    color: rgb(75, 110, 251);
+}
+
+#humidity-icon{
+    color: blue;
+}
+
+#vento-icon{
+    color: violet;
+}
+
+
+
+
+
+
+
+
+
+
