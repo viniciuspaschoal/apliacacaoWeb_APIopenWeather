@@ -12,12 +12,15 @@ const temp_maxElement = document.querySelector("#temp-max")
 const temp_minElement = document.querySelector("#temp-min")
 const humidityElement = document.querySelector("#umidade")
 const whindElement = document.querySelector("#vento")
-const flagElement = document.querySelector("#flag") 
+const flagElement = document.querySelector("#flag")
 const weatherIconElement = document.querySelector("#temp-img")
+
+const cityInfos = document.getElementById("city")
+const infos = document.getElementById("infos")
 
 
 //Funçoes
-const getWeatherData = async(city) =>{
+const getWeatherData = async (city) => {
     const apiWatherURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}&lang=pt_br`
 
     const res = await fetch(apiWatherURL)
@@ -30,13 +33,13 @@ const getWeatherData = async(city) =>{
 
 const showWeatherData = async (city) => {
     const data = await getWeatherData(city)
-    
+
 
     cityElement.innerText = data.name
     weatherIconElement.setAttribute("src", `http://openweathermap.org/img/wn/${data.weather[0].icon}.png`)
 
     //logica para deixar a primeira letra da palavra em maiúscula
-     //seleciona o inicio e deixa em maiusculo, e o restante em minúsculo
+    //seleciona o inicio e deixa em maiusculo, e o restante em minúsculo
     weatherDescription.innerText = data.weather[0].description.charAt(0).toUpperCase() + data.weather[0].description.slice(1).toLowerCase()
 
     tempElement.innerHTML = `${parseInt(data.main.temp)} <sup>°C<sup/>`
@@ -44,6 +47,14 @@ const showWeatherData = async (city) => {
     temp_minElement.innerHTML = `${parseInt(data.main.temp_min)} <sup>°C<sup/>`
     humidityElement.innerHTML = `${data.main.humidity}%`
     whindElement.innerHTML = `${data.wind.speed} Km/h`
+
+
+    //Depois da primeira busca, mostrar as informações
+    //comandos para manipular CSS
+    cityInfos.style.display = 'flex'    //centraliza o nome da cidade
+    infos.style.display = 'block'       //centraliza as infos
+    
+
 
 }
 

@@ -136,7 +136,11 @@ body{
 }
 
 
+/* faz aparecer apenas a barra de pesquisa no início*/
 
+#city, #infos{
+    display: none;
+}
 
 
 
