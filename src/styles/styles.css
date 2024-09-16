@@ -64,7 +64,7 @@ body{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    padding: 20px;
+    padding: 10px;
     background: linear-gradient(90deg, #5a7cdc, #606dde);
     color: #fff;
     border-radius: 10px;
@@ -72,8 +72,8 @@ body{
 
 #temp img{
     display: flex;
-    height: 60px;
-    width: 60px;  
+    height: 100px;
+    width: 100px;  
 }
 
 #temp-value{
@@ -134,6 +134,7 @@ body{
 #vento-icon{
     color: violet;
 }
+
 
 
 
