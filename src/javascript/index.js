@@ -60,7 +60,7 @@ const showWeatherData = async (city) => {
     // Fazer a busca da imagem da cidade no Unsplash
     const unsplashURL = `${apiUnsplash}${city}&client_id=${unsplashKey}`
 
-    
+
     try {
         const response = await fetch(unsplashURL)
         const imageData = await response.json()
@@ -73,11 +73,14 @@ const showWeatherData = async (city) => {
             // Define o plano de fundo
             fundo_imagem.style.backgroundImage = `url(${imageURL})`
             fundo_imagem.style.backgroundSize = "cover"
+            fundo_imagem.style.backgroundColor = "rgba(0, 0, 0, 0.3)"
+
         } else {
             console.log("Nenhuma imagem foi encontrada.")
             // Caso nenhuma imagem seja encontrada, define uma imagem padrão ou cor de fundo
             fundo_imagem.style.backgroundColor = "#cccccc" // exemplo de cor padrão
         }
+
     } catch (error) {
         console.error("Erro ao buscar imagem:", error)
         // Caso ocorra um erro, define uma cor de fundo padrão

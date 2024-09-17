@@ -24,6 +24,7 @@ body{
 }
 
 
+
 /*BARRA DE PESQUISA*/
 #container{
     padding: 20px;
@@ -32,6 +33,7 @@ body{
     border: 3px solid white;
     border-radius: 15px;
     text-align: center;
+    box-shadow: 5px 4.5px 6px grey;
 }
 
 /*Criando uma animação colorida para o fundo do titulo*/
