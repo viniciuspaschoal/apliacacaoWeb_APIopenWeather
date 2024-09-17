@@ -1,7 +1,8 @@
-//Variaveis e seleção de elementos
+// Constantes e seleção de elementos
 
 const apiKey = "8411249319fd6709c68cf18072ca9350"
-
+const unsplashKey = "0XUY0m16kysWEkerX78-avU7Wy7tepg2l4Ud_nEy94E"
+const apiUnsplash = `https://api.unsplash.com/search/photos?page=1&query=` // Corrigido
 
 const cityInput = document.getElementById("city_name")
 const searchButton = document.getElementById("go-search")
@@ -14,12 +15,16 @@ const humidityElement = document.querySelector("#umidade")
 const whindElement = document.querySelector("#vento")
 const flagElement = document.querySelector("#flag")
 const weatherIconElement = document.querySelector("#temp-img")
+const fundo_imagem = document.getElementById("fundo_imagem")
+
 
 const cityInfos = document.getElementById("city")
 const infos = document.getElementById("infos")
 
 
-//Funçoes
+
+
+// Função para obter os dados do clima
 const getWeatherData = async (city) => {
     const apiWatherURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}&lang=pt_br`
 
@@ -30,16 +35,14 @@ const getWeatherData = async (city) => {
     return data
 }
 
-
+// Função para mostrar os dados do clima e aplicar a imagem de fundo
 const showWeatherData = async (city) => {
     const data = await getWeatherData(city)
-
 
     cityElement.innerText = data.name
     weatherIconElement.setAttribute("src", `http://openweathermap.org/img/wn/${data.weather[0].icon}.png`)
 
-    //logica para deixar a primeira letra da palavra em maiúscula
-    //seleciona o inicio e deixa em maiusculo, e o restante em minúsculo
+    // lógica para deixar a primeira letra da descrição em maiúscula
     weatherDescription.innerText = data.weather[0].description.charAt(0).toUpperCase() + data.weather[0].description.slice(1).toLowerCase()
 
     tempElement.innerHTML = `${parseInt(data.main.temp)} <sup>°C<sup/>`
@@ -48,14 +51,38 @@ const showWeatherData = async (city) => {
     humidityElement.innerHTML = `${data.main.humidity}%`
     whindElement.innerHTML = `${data.wind.speed} Km/h`
 
+    // Mostrar as informações
+    cityInfos.style.display = 'flex'    // centraliza o nome da cidade
+    infos.style.display = 'block'       // centraliza as infos
 
-    //Depois da primeira busca, mostrar as informações
-    //comandos para manipular CSS
-    cityInfos.style.display = 'flex'    //centraliza o nome da cidade
-    infos.style.display = 'block'       //centraliza as infos
+
+
+    // Fazer a busca da imagem da cidade no Unsplash
+    const unsplashURL = `${apiUnsplash}${city}&client_id=${unsplashKey}`
+
     
+    try {
+        const response = await fetch(unsplashURL)
+        const imageData = await response.json()
 
+        if (imageData.results.length > 0) {
+            // Pega a URL da primeira imagem encontrada
+            const imageURL = imageData.results[0].urls.regular
+            console.log(imageURL)
 
+            // Define o plano de fundo
+            fundo_imagem.style.backgroundImage = `url(${imageURL})`
+            fundo_imagem.style.backgroundSize = "cover"
+        } else {
+            console.log("Nenhuma imagem foi encontrada.")
+            // Caso nenhuma imagem seja encontrada, define uma imagem padrão ou cor de fundo
+            fundo_imagem.style.backgroundColor = "#cccccc" // exemplo de cor padrão
+        }
+    } catch (error) {
+        console.error("Erro ao buscar imagem:", error)
+        // Caso ocorra um erro, define uma cor de fundo padrão
+        fundo_imagem.style.backgroundColor = "#cccccc"
+    }
 }
 
 

@@ -6,6 +6,16 @@
 }
 
 body{
+
+}
+
+#fundo_imagem{
+    width: 100vw; /* Ocupa toda a largura da viewport */
+    height: 100vh; /* Ocupa toda a altura da viewport */
+    position: relative; /* Necessário para posicionar o conteúdo corretamente */
+    background-size: cover; /* Ajusta a imagem para cobrir o elemento */
+    background-position: center; /* Centraliza a imagem */
+
     background-color: rgb(52, 92, 254);
     display: flex;
     align-items: center;
@@ -17,10 +27,34 @@ body{
 /*BARRA DE PESQUISA*/
 #container{
     padding: 20px;
+    padding-top: 10px;
     background-color: white;
     border: 3px solid white;
     border-radius: 15px;
+    text-align: center;
 }
+
+/*Criando uma animação colorida para o fundo do titulo*/
+
+@keyframes color-change {
+    0% { text-shadow: 1px 1px 2px #B0C4DE; } /* Vermelho */
+    14% { text-shadow: 1px 1px 2px #007FFF; } /* Laranja */
+    28% { text-shadow: 1px 1px 2px #4682B4; } /* Amarelo */
+    42% { text-shadow: 1px 1px 2px #6495ED; } /* Verde Limão */
+    57% { text-shadow: 1px 1px 2px #7B68EE; } /* Ciano */
+    71% { text-shadow: 1px 1px 2px #00008B; } /* Azul */
+    85% { text-shadow: 1px 1px 2px #191970; } /* Rosa */
+    95% { text-shadow: 1px 1px 2px #000080; } /* Vermelho */
+    100% { text-shadow: 1px 1px 2px #B0C4DE; } /* Vermelho */
+}
+
+
+
+#title{
+    margin-bottom: 1vh;
+    animation: color-change 5s infinite; /* Duração da animação, repetições e tipo de animação */
+}
+
 
 
 #search{
