@@ -1,7 +1,7 @@
 // Constantes e seleção de elementos
 
-const apiKey = "8411249319fd6709c68cf18072ca9350"
-const unsplashKey = "0XUY0m16kysWEkerX78-avU7Wy7tepg2l4Ud_nEy94E"
+const apiKey = ""
+const unsplashKey = ""
 const apiUnsplash = `https://api.unsplash.com/search/photos?page=1&query=` // Corrigido
 
 const cityInput = document.getElementById("city_name")
